@@ -113,11 +113,8 @@ class Ui_Page1(object):
         self.textEdit.setStyleSheet("background-color:white;")
         self.textEdit.setObjectName("textEdit")
         self.label_5 = QtWidgets.QLabel(self.frame_3)
-        self.label_5.setGeometry(QtCore.QRect(340, 50, 131, 18))
-        self.label_5.setStyleSheet("color: #1E3A8A;  /* A bold, deep blue (Tailwind\'s blue-900) */\n"
-"\n"
-"font-size: 16px;\n"
-"")
+        self.label_5.setGeometry(QtCore.QRect(340, 50, 200, 18))
+
         self.label_5.setObjectName("label_5")
         self.textEdit_2 = QtWidgets.QTextEdit(self.frame_3)
         self.textEdit_2.setGeometry(QtCore.QRect(340, 70, 131, 31))
@@ -153,8 +150,12 @@ class Ui_Page1(object):
 "")
         self.Ajouter.setObjectName("Ajouter")
         self.label_6 = QtWidgets.QLabel(self.frame_3)
-        self.label_6.setGeometry(QtCore.QRect(160, 50, 131, 18))
+        self.label_6.setGeometry(QtCore.QRect(150, 50, 180, 18))
         self.label_6.setStyleSheet("color: #1E3A8A;  /* A bold, deep blue (Tailwind\'s blue-900) */\n"
+"\n"
+"font-size: 16px;\n"
+"")
+        self.label_5.setStyleSheet("color: #1E3A8A;  /* A bold, deep blue (Tailwind\'s blue-900) */\n"
 "\n"
 "font-size: 16px;\n"
 "")
@@ -562,7 +563,8 @@ class Ui_Page1(object):
         self.frame_3.setObjectName("frame_3")
 
         self.NbHydro = QtWidgets.QLabel(self.frame_3)
-        self.NbHydro.setGeometry(QtCore.QRect(30, 20, 281, 40))
+        
+        self.NbHydro.setGeometry(QtCore.QRect(30, 20, 300, 40))
         self.NbHydro.setObjectName("NbHydro")
 
         self.HydroEdit = QtWidgets.QTextEdit(self.frame_3)
@@ -666,7 +668,7 @@ class Ui_Page1(object):
         self.MaxStartEdit.setObjectName("MaxStartEdit")
 
         self.nbPeriodes = QtWidgets.QLabel(self.frame_2)
-        self.nbPeriodes.setGeometry(QtCore.QRect(30, 110, 281, 40))
+        self.nbPeriodes.setGeometry(QtCore.QRect(30, 110, 400, 60))
         self.nbPeriodes.setObjectName("nbPeriodes")
 
         self.NbPeriodEdit = QtWidgets.QTextEdit(self.frame_2)
@@ -738,54 +740,167 @@ class Ui_Page1(object):
         self.suivant_p8.setObjectName("suivant_p8")
         self.stackedWidget.addWidget(self.page_8)
 
+        self.ajoute2.setStyleSheet("QPushButton {\n"
+            "   background-color:#2F4F70; \n"
+            "   color:rgb(245, 245, 220);            /* White text */\n"
+            "    font-size: 14px;            /* Font size */\n"
+            "    font-weight: bold;          /* Bold text */\n"
+            "    border: 2px solid #5F9EA0;  /* Border with a lighter blue color */\n"
+            "    border-radius: 8px;         /* Rounded corners */\n"
+            "\n"
+            "}\n"
+            "\n"
+            "QPushButton:hover {\n"
+            "    background-color: #5F9EA0;  /* Lighter Blue when hovered */\n"
+            "    border: 2px solid #4682B4;  /* Darker border on hover */\n"
+            "}\n"
+            "\n"
+            "QPushButton:pressed {\n"
+            "    background-color: #4169E1;  /* Royal Blue when pressed */\n"
+            "    border: 2px solid #3A75A3;  /* Darker border when pressed */\n"
+            "}\n"
+            "\n"
+            "QPushButton:disabled {\n"
+            "    background-color: #A9A9A9;  /* Grey background for disabled button */\n"
+            "    color: #7F7F7F;              /* Grey text for disabled button */\n"
+            "    border: 2px solid #D3D3D3;   /* Light border for disabled button */\n"
+            "}\n"
+        )
+        self.ajoute3.setStyleSheet("QPushButton {\n"
+            "   background-color:#2F4F70; \n"
+            "   color:rgb(245, 245, 220);            /* White text */\n"
+            "    font-size: 14px;            /* Font size */\n"
+            "    font-weight: bold;          /* Bold text */\n"
+            "    border: 2px solid #5F9EA0;  /* Border with a lighter blue color */\n"
+            "    border-radius: 8px;         /* Rounded corners */\n"
+            "\n"
+            "}\n"
+            "\n"
+            "QPushButton:hover {\n"
+            "    background-color: #5F9EA0;  /* Lighter Blue when hovered */\n"
+            "    border: 2px solid #4682B4;  /* Darker border on hover */\n"
+            "}\n"
+            "\n"
+            "QPushButton:pressed {\n"
+            "    background-color: #4169E1;  /* Royal Blue when pressed */\n"
+            "    border: 2px solid #3A75A3;  /* Darker border when pressed */\n"
+            "}\n"
+            "\n"
+            "QPushButton:disabled {\n"
+            "    background-color: #A9A9A9;  /* Grey background for disabled button */\n"
+            "    color: #7F7F7F;              /* Grey text for disabled button */\n"
+            "    border: 2px solid #D3D3D3;   /* Light border for disabled button */\n"
+            "}\n"
+        )
+        self.btnAjouterOffre.setStyleSheet("QPushButton {\n"
+            "   background-color:#2F4F70; \n"
+            "   color:rgb(245, 245, 220);            /* White text */\n"
+            "    font-size: 14px;            /* Font size */\n"
+            "    font-weight: bold;          /* Bold text */\n"
+            "    border: 2px solid #5F9EA0;  /* Border with a lighter blue color */\n"
+            "    border-radius: 8px;         /* Rounded corners */\n"
+            "\n"
+            "}\n"
+            "\n"
+            "QPushButton:hover {\n"
+            "    background-color: #5F9EA0;  /* Lighter Blue when hovered */\n"
+            "    border: 2px solid #4682B4;  /* Darker border on hover */\n"
+            "}\n"
+            "\n"
+            "QPushButton:pressed {\n"
+            "    background-color: #4169E1;  /* Royal Blue when pressed */\n"
+            "    border: 2px solid #3A75A3;  /* Darker border when pressed */\n"
+            "}\n"
+            "\n"
+            "QPushButton:disabled {\n"
+            "    background-color: #A9A9A9;  /* Grey background for disabled button */\n"
+            "    color: #7F7F7F;              /* Grey text for disabled button */\n"
+            "    border: 2px solid #D3D3D3;   /* Light border for disabled button */\n"
+            "}\n"
+        )
+        self.LabelOffre.setStyleSheet("color: #2F4F70;   /* Steel Blue (A darker blue) */\n"
+"\n"
+"font-size: 18px;  /* Font size */\n"
+"font-weight: bold;  /* Bold text */\n"
+"")
+        self.label_6.setStyleSheet("color: #2F4F70;   /* Steel Blue (A darker blue) */\n"
+"\n"
+"font-size: 18px;  /* Font size */\n"
+"font-weight: bold;  /* Bold text */\n"
+"")
+        self.label_5.setStyleSheet("color: #2F4F70;   /* Steel Blue (A darker blue) */\n"
+"\n"
+"font-size: 18px;  /* Font size */\n"
+"font-weight: bold;  /* Bold text */\n"
+"")
+        self.label_9.setStyleSheet("color: #2F4F70;   /* Steel Blue (A darker blue) */\n"
+"\n"
+"font-size: 18px;  /* Font size */\n"
+"font-weight: bold;  /* Bold text */\n"
+"")
+        self.Nbtypes.setStyleSheet("color: #2F4F70;   /* Steel Blue (A darker blue) */\n"
+"\n"
+"font-size: 18px;  /* Font size */\n"
+"font-weight: bold;  /* Bold text */\n"
+"")
+        self.NbHydro.setStyleSheet("color: #2F4F70;   /* Steel Blue (A darker blue) */\n"
+"\n"
+"font-size: 14px;  /* Font size */\n"
+"font-weight: bold;  /* Bold text */\n"
+"")
+
         
+        self.nbPeriodes.setStyleSheet("color: #2F4F70;   /* Steel Blue (A darker blue) */\n"
+"\n"
+"font-size: 18px;  /* Font size */\n"
+"font-weight: bold;  /* Bold text */\n"
+"")
 
 
-
+          
         self.retranslateUi(Page1)
         self.stackedWidget.setCurrentIndex(0)
         QtCore.QMetaObject.connectSlotsByName(Page1)
         
 
     def retranslateUi(self, Page1):
-
         _translate = QtCore.QCoreApplication.translate
         Page1.setWindowTitle(_translate("Page1", "Form"))
         self.label_3.setText(_translate("Page1", "   Choisis un problème à resoudre "))
         self.Tours.setText(_translate("Page1", "Couverture des tours"))
         self.pushButton_6.setText(_translate("Page1", "Production d’énergie électrique "))
-        self.textEdit.setHtml(_translate("Page1", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
-"<html><head><meta name=\"qrichtext\" content=\"1\" /><meta charset=\"utf-8\" /><style type=\"text/css\">\n"
-"p, li { white-space: pre-wrap; }\n"
-"hr { height: 1px; border-width: 0; }\n"
-"li.unchecked::marker { content: \"\\2610\"; }\n"
-"li.checked::marker { content: \"\\2612\"; }\n"
-"</style></head><body style=\" font-family:\'Segoe UI\'; font-size:9.75pt; font-weight:400; font-style:normal;\">\n"
-"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p></body></html>"))
-        self.label_5.setText(_translate("Page1", "Regions Number"))
-        self.textEdit_2.setHtml(_translate("Page1", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
-"<html><head><meta name=\"qrichtext\" content=\"1\" /><meta charset=\"utf-8\" /><style type=\"text/css\">\n"
-"p, li { white-space: pre-wrap; }\n"
-"hr { height: 1px; border-width: 0; }\n"
-"li.unchecked::marker { content: \"\\2610\"; }\n"
-"li.checked::marker { content: \"\\2612\"; }\n"
-"</style></head><body style=\" font-family:\'Segoe UI\'; font-size:9.75pt; font-weight:400; font-style:normal;\">\n"
-"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p></body></html>"))
+
+        html_style = _translate("Page1", 
+            "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+            "<html><head><meta name=\"qrichtext\" content=\"1\" /><meta charset=\"utf-8\" /><style type=\"text/css\">\n"
+            "p, li { white-space: pre-wrap; }\n"
+            "hr { height: 1px; border-width: 0; }\n"
+            "li.unchecked::marker { content: \"\\2610\"; }\n"
+            "li.checked::marker { content: \"\\2612\"; }\n"
+            "</style></head><body style=\" font-family:'Segoe UI'; font-size:9.75pt; font-weight:400; font-style:normal;\">\n"
+            "<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p></body></html>")
+
+        self.textEdit.setHtml(html_style)
+        self.textEdit_2.setHtml(html_style)
+        self.textEdit_6.setHtml(html_style)
+        css_style = """
+    font-family: 'Segoe UI';
+    font-size: 10pt;
+    font-weight: 400;
+    font-style: normal;
+"""
+
+        self.periodsEdit.setStyleSheet(css_style)
+
+
+        self.label_5.setText(_translate("Page1", "Nombre des regions"))
         self.Ajouter.setText(_translate("Page1", "Ajouter"))
-        self.label_6.setText(_translate("Page1", "Tours Number"))
+        self.label_6.setText(_translate("Page1", "Nombre des tours"))
         self.Suivant_p2.setText(_translate("Page1", "Suivant"))
         self.precedent_p2.setText(_translate("Page1", "Precedent"))
         self.suivant_3.setText(_translate("Page1", "Suivant"))
         self.precedent_p3.setText(_translate("Page1", "Precedent"))
         self.label_9.setText(_translate("Page1", "Budget"))
-        self.textEdit_6.setHtml(_translate("Page1", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
-"<html><head><meta name=\"qrichtext\" content=\"1\" /><meta charset=\"utf-8\" /><style type=\"text/css\">\n"
-"p, li { white-space: pre-wrap; }\n"
-"hr { height: 1px; border-width: 0; }\n"
-"li.unchecked::marker { content: \"\\2610\"; }\n"
-"li.checked::marker { content: \"\\2612\"; }\n"
-"</style></head><body style=\" font-family:\'Segoe UI\'; font-size:9.75pt; font-weight:400; font-style:normal;\">\n"
-"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p></body></html>"))
         self.Suivant_4.setText(_translate("Page1", "Suivant"))
         self.precedent_p4.setText(_translate("Page1", "Precedent"))
         self.precedent_p5.setText(_translate("Page1", "Precedent"))
@@ -799,18 +914,19 @@ class Ui_Page1(object):
         self.precedent_p3.clicked.connect(lambda: self.stackedWidget.setCurrentWidget(self.page_2))
         self.precedent_p4.clicked.connect(lambda: self.stackedWidget.setCurrentWidget(self.page_3))
         self.precedent_p5.clicked.connect(lambda: self.stackedWidget.setCurrentWidget(self.page_4))
+        self.precedent_p6.clicked.connect(lambda: self.stackedWidget.setCurrentWidget(self.Page_1))
+        self.precedent_p8.clicked.connect(lambda: self.stackedWidget.setCurrentWidget(self.page_7))
+        self.precedent_p5_2.clicked.connect(lambda: self.stackedWidget.setCurrentWidget(self.page_6))
         self.Ajouter.clicked.connect(self.getdata)
         self.ajoute2.clicked.connect(self.getdata2)
         self.ajoute3.clicked.connect(self.getDataRoute)
         self.suivant_p7.clicked.connect(self.InsertRoutes)
-        
-        
+
         self.tableView.clicked.connect(self.toggle_item)
-        
-             
+
         self.pushButton_6.clicked.connect(lambda: self.stackedWidget.setCurrentWidget(self.page_6))
         self.suivant_p6.clicked.connect(self.FixedData2)
-        
+
         self.Nbtypes.setText(_translate("MainWindow", "Nombre des origines"))
         self.suivant_p6.setText(_translate("MainWindow", "Suivant"))
         self.precedent_p6.setText(_translate("MainWindow", "Precedent"))
@@ -821,6 +937,8 @@ class Ui_Page1(object):
         self.NbHydro.setText(_translate("MainWindow", "Nombre de vos itinéraires de transport"))
         self.suivant_p7.setText(_translate("MainWindow", "Suivant"))
         self.precedent_p5_2.setText(_translate("MainWindow", "Precedent"))
+
+
         
         
     def next_index(self):
@@ -838,7 +956,7 @@ class Ui_Page1(object):
         if self.textEdit_2.toPlainText()=="" or not(is_int(self.textEdit_2.toPlainText())) or int(self.textEdit_2.toPlainText()) < 0:
             msg = QtWidgets.QMessageBox()
             msg.setIcon(QtWidgets.QMessageBox.Warning)
-            msg.setText("Nombre des regions est faux")
+            msg.setText("Nombre des origines est faux")
             msg.setInformativeText("Entrez un nombre entier")
             msg.setWindowTitle("Erreur")
             msg.exec_()
@@ -847,7 +965,7 @@ class Ui_Page1(object):
         if self.textEdit.toPlainText()=="" or not(is_int(self.textEdit.toPlainText())):
             msg = QtWidgets.QMessageBox()
             msg.setIcon(QtWidgets.QMessageBox.Warning)
-            msg.setText("Nombre des tours est faux")
+            msg.setText("Nombre des clients est faux")
             msg.setInformativeText("Entrez un nombre entier")
             msg.setWindowTitle("Erreur")
             msg.exec_()
@@ -1075,7 +1193,7 @@ class Ui_Page1(object):
         if self.TypeEdit.toPlainText() == "" or not is_int(self.TypeEdit.toPlainText()) or int(self.TypeEdit.toPlainText()) <= 0:
             msg = QtWidgets.QMessageBox()
             msg.setIcon(QtWidgets.QMessageBox.Warning)
-            msg.setText("Nombre des régions est incorrect")
+            msg.setText("Nombre des origines est incorrect")
             msg.setInformativeText("Entrez un nombre entier strictement positif")
             msg.setWindowTitle("Erreur")
             msg.exec_()
@@ -1177,20 +1295,30 @@ class Ui_Page1(object):
     
         for i in range(1, n):
             try:
-                # Récupérer et convertir les valeurs en int
-                origin = int(model.item(i, 1).text())
+                # Récupérer l'origine sous forme de chaîne, nettoyer et mettre en majuscule
+                origin_str = model.item(i, 1).text().strip().upper()
+    
+                # Vérifier si l'origine est dans la liste des régions autorisées
+                if origin_str not in self.listRegion:
+                    raise ValueError(f"Origine inconnue à la ligne {i+1} : '{origin_str}'.")
+    
+                # Convertir l'origine en rang (position dans la liste)
+                origin = self.listRegion.index(origin_str)+1
+                
                 client = int(model.item(i, 2).text())
-                cout = int(model.item(i, 3).text())
-                qtite = int(model.item(i, 4).text())
+                cout = float(model.item(i, 3).text())
+                qtite = float(model.item(i, 4).text())
+    
             except (ValueError, AttributeError) as e:
                 msg = QtWidgets.QMessageBox()
                 msg.setIcon(QtWidgets.QMessageBox.Warning)
-                msg.setText(f"Erreur de conversion à la ligne {i+1}")
-                msg.setInformativeText("Assurez-vous que toutes les valeurs sont des entiers valides.")
+                msg.setText(f"Erreur à l'entrée {i+1}")
+                msg.setInformativeText(str(e))
                 msg.setWindowTitle("Erreur de saisie")
                 msg.exec_()
                 return
 
+            
             # Vérifier que origin et client sont dans les listes autorisées
             if origin-1 not in self.originsList:
                 msg = QtWidgets.QMessageBox()
@@ -1227,7 +1355,7 @@ class Ui_Page1(object):
 
         print("Coûts :", self.c)
         print("Capacités :", self.q)
-        solution=transport_optimization_simple(self.originsList, self.clients, self.c, self.q, self.Clients, self.Origins)
+        solution,model =transport_optimization_simple(self.originsList, self.clients, self.c, self.q, self.Clients, self.Origins)
         print(solution)
         
     # Construire le texte de la solution
@@ -1256,10 +1384,15 @@ class Ui_Page1(object):
                 return
 
         # Sinon, on a une solution optimale
-        texte = """
+        cout_total = model.ObjVal
+
+        texte = f"""
         <h2 style="color: #2E86C1; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
             Solution optimale
         </h2>
+        <p style="font-size:16px; color:#1A5276; font-weight:bold; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
+            Coût total minimisé : {cout_total:.2f}
+        </p>
         <p style="font-size:14px; color:#34495E; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
             Voici le détail des transports optimaux calculés par le modèle :
         </p>
@@ -1267,7 +1400,7 @@ class Ui_Page1(object):
             <thead>
                 <tr style="background-color: #2980B9; color: white;">
                     <th style="padding: 8px; border: 1px solid #ddd;">Origine</th>
-                    <th style="padding: 8px; border: 1px solid #ddd;">Client</th>
+                    <th style="padding: 8px; border: 1px solid #ddd;">Destination</th>
                     <th style="padding: 8px; border: 1px solid #ddd;">Quantité transportée</th>
                 </tr>
             </thead>
@@ -1308,32 +1441,45 @@ class Ui_Page1(object):
 
 
 
+
         
     def FixedData2(self):
         model = self.tableViewOffre.model()
         print(model)
+        
+        # Contrôle si le modèle est None
+        if model is None:
+            msg = QtWidgets.QMessageBox()
+            msg.setIcon(QtWidgets.QMessageBox.Warning)
+            msg.setText("Empty input")
+            msg.setInformativeText("Veuillez remplir les données avant de passer à létape suivante.")
+            msg.setWindowTitle("Error")
+            msg.exec_()
+            return
+
         self.Clients= dict()
         self.clients=[]
+        # Le reste de votre code inchangé...
         n = model.rowCount()
         #print("n = ",n)
         for i in range(0,n):
-            if(not(is_int(model.item(i,1).text())) or int(model.item(i,1).text()) <= 0):
+            if(not(is_float(model.item(i,1).text())) or float(model.item(i,1).text()) <= 0):
                 msg = QtWidgets.QMessageBox()
                 msg.setIcon(QtWidgets.QMessageBox.Warning)
-                msg.setText("wrong input in cell ("+str(1)+","+str(i)+")")
-                msg.setInformativeText("Please enter an integer number")
+                msg.setText("Mauvaise entrée")
+                msg.setInformativeText("S'il vous plait il faut faire entrer un nombre")
                 msg.setWindowTitle("Error")
                 msg.exec_()
                 return
-            if(int(model.item(i,1).text()) < 0):
+            if(float(model.item(i,1).text()) < 0):
                 msg = QtWidgets.QMessageBox()
                 msg.setIcon(QtWidgets.QMessageBox.Warning)
-                msg.setText("wrong input in cell ("+str(1)+","+str(i)+")")
-                msg.setInformativeText("Please enter a positive integer number")
-                msg.setWindowTitle("Error")
+                msg.setText("Mauvaise entrée ")
+                msg.setInformativeText("Entrer un nombre positif")
+                msg.setWindowTitle("Error") 
                 msg.exec_()
                 return
-            ClientOffre = int(model.item(i,1).text())
+            ClientOffre = float(model.item(i,1).text())
             self.clients.append(i)
             self.Clients[i] = ClientOffre
         print(self.Clients)
@@ -1345,7 +1491,7 @@ class Ui_Page1(object):
         n = model.rowCount()
         #print("n = ",n)
         for i in range(0,n):
-            if(not(is_int(model.item(i,1).text())) or int(model.item(i,1).text()) <= 0):
+            if(not(is_float(model.item(i,1).text())) or float(model.item(i,1).text()) <= 0):
                 msg = QtWidgets.QMessageBox()
                 msg.setIcon(QtWidgets.QMessageBox.Warning)
                 msg.setText("wrong input in cell ("+str(1)+","+str(i)+")")
@@ -1353,7 +1499,7 @@ class Ui_Page1(object):
                 msg.setWindowTitle("Error")
                 msg.exec_()
                 return
-            if(int(model.item(i,1).text()) < 0):
+            if(float(model.item(i,1).text()) < 0):
                 msg = QtWidgets.QMessageBox()
                 msg.setIcon(QtWidgets.QMessageBox.Warning)
                 msg.setText("wrong input in cell ("+str(1)+","+str(i)+")")
@@ -1361,72 +1507,11 @@ class Ui_Page1(object):
                 msg.setWindowTitle("Error")
                 msg.exec_()
                 return
-            OriginOffre = int(model.item(i,1).text())
+            OriginOffre = float(model.item(i,1).text())
             self.Origins[i] = OriginOffre
         print(self.Origins)
         self.stackedWidget.setCurrentWidget(self.page_7)
-        #self.stackedWidget.setCurrentWidget(self.page_4)
-    def resoudrecellTower(self):
 
-        if not(is_float(self.textEdit_6.toPlainText())):
-            msg = QtWidgets.QMessageBox()
-            msg.setIcon(QtWidgets.QMessageBox.Warning)
-            msg.setText("wrong input in allocated budget")
-            msg.setInformativeText("Please enter a float number")
-            msg.setWindowTitle("Error")
-            msg.exec_()
-            return
-
-        if(float(self.textEdit_6.toPlainText()) < 0):
-            msg = QtWidgets.QMessageBox()
-            msg.setIcon(QtWidgets.QMessageBox.Warning)
-            msg.setText("wrong input in allocated budget")
-            msg.setInformativeText("Please enter a positive float number")
-            msg.setWindowTitle("Error")
-            msg.exec_()
-            return
-
-        self.allocated_budget = float((self.textEdit_6.toPlainText()))
-
-        model = self.tableView_4.model()
-        m = model.rowCount()
-        for i in range(1,m):
-            if not(is_float(model.item(i,1).text())):
-                msg = QtWidgets.QMessageBox()
-                msg.setIcon(QtWidgets.QMessageBox.Warning)
-                msg.setText("wrong input in cell ("+str(i)+",1)")
-                msg.setInformativeText("Please enter a float number")
-                msg.setWindowTitle("Error")
-                msg.exec_()
-                return
-            value = float(model.item(i,1).text())
-            self.site_coverage_cost[i-1].append(value)
-        
-            res = cell_tower_problem(self.region_population,self.site_coverage_cost,self.allocated_budget)
-            data = ""
-            data += "Nombre de  Solution = " + str(len(res)) + "\n"
-        try:
-            for i in range(len(res)):
-                data += "Solution "+str(i+1)+"\n"
-                data += "Construction de la tour:\n"
-                for j in range(len(res[i]['towers_built'])):
-                    data += self.listtower[res[i]['towers_built'][j]] + " "
-                data+= "\n"
-                data+="Coût total : \n"
-                data+= str(res[i]['total_cost']) + "\n"
-                data+="consommation budgétaire : " +str(res[i]['budget_consumption'])+"%"+ "\n"
-                data+="Population Totale : "+str(res[i]['total_population'])+"\n"
-                data+="pourcentage de couverture : "+str(res[i]['coverage_percentage'])+"%"+ "\n"
-            self.rescelltower.setText(data)
-            self.stackedWidget.setCurrentWidget(self.page_5)
-        except Exception as e:
-            msg = QtWidgets.QMessageBox()
-            msg.setIcon(QtWidgets.QMessageBox.Warning)
-            msg.setText("Error")
-            msg.setInformativeText(e.__str__())
-            msg.setWindowTitle("Error")
-            msg.exec_()
-## Second Problem
       
  
 

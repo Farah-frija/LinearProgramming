@@ -38,7 +38,7 @@ def transport_optimization_simple(I, J, c, q, d, s):
 
     if model.status == GRB.OPTIMAL:
         solution = {(i,j): x[i,j].X for i in I for j in J}
-        return solution
+        return solution,model
     else:
         print("Aucune solution optimale trouvée.")
         return None
