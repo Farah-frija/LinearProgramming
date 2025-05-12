@@ -1052,12 +1052,14 @@ class Ui_Page1(object):
             for j in range(1,m):
                 if (model.item(i,j) == None):
                     continue
-
+                
                 value = model.item(i,j).data(QtCore.Qt.UserRole)
+                print(value)
                 if(value != None):
                    coverge_set.add(j-1)
                 
             self.site_coverage_cost[i-1].append(coverge_set)
+            
         print('s2')
         print(self.site_coverage_cost)
         self.stackedWidget.setCurrentWidget(self.page_3)
@@ -1110,6 +1112,7 @@ class Ui_Page1(object):
 
         model = self.tableView_4.model()
         m = model.rowCount()
+        print(m)
         for i in range(1,m):
             if not(is_float(model.item(i,1).text())):
                 msg = QtWidgets.QMessageBox()
@@ -1120,11 +1123,13 @@ class Ui_Page1(object):
                 msg.exec_()
                 return
             value = float(model.item(i,1).text())
+            print(value,"taadaaa")
+            
             self.site_coverage_cost[i-1].append(value)
-        
-            res = cell_tower_problem(self.region_population,self.site_coverage_cost,self.allocated_budget)
-            data = ""
-            data += "Nombre de  Solution = " + str(len(res)) + "\n"
+            print(self.site_coverage_cost)
+        res = cell_tower_problem(self.region_population,self.site_coverage_cost,self.allocated_budget)
+        data = ""
+        data += "Nombre de  Solution = " + str(len(res)) + "\n"
         try:
             for i in range(len(res)):
                 data += "Solution "+str(i+1)+"\n"

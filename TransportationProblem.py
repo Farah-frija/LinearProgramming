@@ -41,7 +41,7 @@ def transport_optimization_simple(I, J, c, q, d, s):
         return solution,model
     else:
         print("Aucune solution optimale trouvée.")
-        return None
+        return None,None
 
 # Exemple d'utilisation avec indices entiers
 if __name__ == "__main__":
@@ -74,7 +74,7 @@ if __name__ == "__main__":
         1: 100,
     }
 
-    solution = transport_optimization_simple(I, J, c, q, d, s)
+    solution ,model= transport_optimization_simple(I, J, c, q, d, s)
 
     if solution:
         print("Solution optimale :")
