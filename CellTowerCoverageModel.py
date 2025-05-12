@@ -41,7 +41,7 @@ def cell_tower_problem(
         if m.status == GRB.OPTIMAL:
             print("Une solution optimale est trouvée")
         elif m.status == GRB.INFEASIBLE:
-            raise Exception("infeasible")
+            print("infeasible")
         elif m.status == GRB.INF_OR_UNBD:
             raise Exception("error")
 
