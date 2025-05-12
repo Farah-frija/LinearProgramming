@@ -868,7 +868,7 @@ class Ui_Page1(object):
         Page1.setWindowTitle(_translate("Page1", "Form"))
         self.label_3.setText(_translate("Page1", "   Choisis un problème à resoudre "))
         self.Tours.setText(_translate("Page1", "Couverture des tours"))
-        self.pushButton_6.setText(_translate("Page1", "Production d’énergie électrique "))
+        self.pushButton_6.setText(_translate("Page1", "Problème de transport "))
 
         html_style = _translate("Page1", 
             "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
