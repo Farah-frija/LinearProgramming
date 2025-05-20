@@ -9,7 +9,7 @@
 
 import string
 from PyQt5 import QtCore, QtGui, QtWidgets
-from CellTowerCoverageModel import cell_tower_problem
+from MaximumCoverageModel import maximum_coverage_problem
 from controlInput import is_float, is_int
 from TransportationProblem import transport_optimization_simple
 class Ui_Page1(object):
@@ -71,7 +71,7 @@ class Ui_Page1(object):
 "}\n"
 "")
         self.Tours.setFlat(False)
-        self.Tours.setObjectName("Tours")
+        self.Tours.setObjectName("Emplacements")
         self.pushButton_6 = QtWidgets.QPushButton(self.frame_2)
         self.pushButton_6.setGeometry(QtCore.QRect(200, 310, 311, 71))
         self.pushButton_6.setStyleSheet("QPushButton {\n"
@@ -403,10 +403,10 @@ class Ui_Page1(object):
         self.scrollAreaWidgetContents.setGeometry(QtCore.QRect(0, 0, 619, 409))
         self.scrollAreaWidgetContents.setObjectName("scrollAreaWidgetContents")
         self.scrollArea.setWidget(self.scrollAreaWidgetContents)
-        self.rescelltower = QtWidgets.QLabel(self.scrollArea)
-        self.rescelltower.setGeometry(QtCore.QRect(0, 0, 771, 441))
-        self.rescelltower.setObjectName("rescelltower")
-        self.rescelltower.setStyleSheet("QLabel{\n"
+        self.rescelllocation = QtWidgets.QLabel(self.scrollArea)
+        self.rescelllocation.setGeometry(QtCore.QRect(0, 0, 771, 441))
+        self.rescelllocation.setObjectName("rescelllocation")
+        self.rescelllocation.setStyleSheet("QLabel{\n"
                                         "    color : green;\n"
                                         "font-size : 16px;\n"
                                         "font-weight : bold;\n"
@@ -867,7 +867,7 @@ class Ui_Page1(object):
         _translate = QtCore.QCoreApplication.translate
         Page1.setWindowTitle(_translate("Page1", "Form"))
         self.label_3.setText(_translate("Page1", "   Choisis un problème à resoudre "))
-        self.Tours.setText(_translate("Page1", "Couverture des tours"))
+        self.Tours.setText(_translate("Page1", "Couverture maximale"))
         self.pushButton_6.setText(_translate("Page1", "Problème de transport "))
 
         html_style = _translate("Page1", 
@@ -895,7 +895,7 @@ class Ui_Page1(object):
 
         self.label_5.setText(_translate("Page1", "Nombre des regions"))
         self.Ajouter.setText(_translate("Page1", "Ajouter"))
-        self.label_6.setText(_translate("Page1", "Nombre des tours"))
+        self.label_6.setText(_translate("Page1", "Emplacements"))
         self.Suivant_p2.setText(_translate("Page1", "Suivant"))
         self.precedent_p2.setText(_translate("Page1", "Precedent"))
         self.suivant_3.setText(_translate("Page1", "Suivant"))
@@ -907,9 +907,9 @@ class Ui_Page1(object):
 
         self.Tours.clicked.connect(lambda: self.stackedWidget.setCurrentWidget(self.page_2))
         self.btnAjouterOffre.clicked.connect(self.getdata3)
-        self.Suivant_p2.clicked.connect(self.insertdataintowerregion)
-        self.suivant_3.clicked.connect(self.regionpopulation)
-        self.Suivant_4.clicked.connect(self.resoudrecellTower)
+        self.Suivant_p2.clicked.connect(self.insertdatainlocationregion)
+        self.suivant_3.clicked.connect(self.regionpoids)
+        self.Suivant_4.clicked.connect(self.resoudrecelllocation)
         self.precedent_p2.clicked.connect(lambda: self.stackedWidget.setCurrentWidget(self.Page_1))
         self.precedent_p3.clicked.connect(lambda: self.stackedWidget.setCurrentWidget(self.page_2))
         self.precedent_p4.clicked.connect(lambda: self.stackedWidget.setCurrentWidget(self.page_3))
@@ -971,33 +971,33 @@ class Ui_Page1(object):
             msg.exec_()
             return
         region_number = int(self.textEdit_2.toPlainText())
-        tower_number = int(self.textEdit.toPlainText())
+        location_number = int(self.textEdit.toPlainText())
         self.listregion = [('Region' + str(i)) for i in range(1,region_number+1)]
-        self.listtower = [('Tower' + str(i)) for i in range(1,tower_number+1)]
+        self.listlocation = [('Emplacement' + str(i)) for i in range(1,location_number+1)]
         print(self.listregion)
-        print(self.listtower)
+        print(self.listlocation)
         model = QtGui.QStandardItemModel()
         model1 = QtGui.QStandardItemModel()
-        model.setRowCount(tower_number)
+        model.setRowCount(location_number)
         model.setColumnCount(region_number)
         model1.setColumnCount(region_number)
         model1.setRowCount(2)
         model2 = QtGui.QStandardItemModel()
-        model2.setRowCount(tower_number)
+        model2.setRowCount(location_number)
         model2.setColumnCount(2)
         item = QtGui.QStandardItem("Cost")
         model2.setItem(0, 1, item)
-        for i in range(tower_number):
-            item = QtGui.QStandardItem(self.listtower[i])
+        for i in range(location_number):
+            item = QtGui.QStandardItem(self.listlocation[i])
             item.setEditable(False) 
             item.setFlags(QtCore.Qt.ItemIsEnabled | QtCore.Qt.ItemIsSelectable| QtCore.Qt.ItemIsEnabled)  # Make the item selectable*
             
             
             model.setItem(i+1, 0, item)
-            item = QtGui.QStandardItem(self.listtower[i])
+            item = QtGui.QStandardItem(self.listlocation[i])
             model2.setItem(i+1, 0, item)
 
-        item = QtGui.QStandardItem("Population")
+        item = QtGui.QStandardItem("poids")
         model1.setItem(1,0, item)
         for i in range(region_number):
             item = QtGui.QStandardItem(self.listregion[i])
@@ -1028,7 +1028,7 @@ class Ui_Page1(object):
             default_background = self.tableView.palette().color(QtGui.QPalette.Base)
             item.setData(None, QtCore.Qt.UserRole)
             item.setBackground(default_background)  #
-    def insertdataintowerregion(self):
+    def insertdatainlocationregion(self):
         self.site_coverage_cost = dict()
 
         if(self.tableView.model() == None):
@@ -1063,9 +1063,9 @@ class Ui_Page1(object):
         print('s2')
         print(self.site_coverage_cost)
         self.stackedWidget.setCurrentWidget(self.page_3)
-    def regionpopulation(self):
+    def regionpoids(self):
         model = self.tableView_3.model()
-        self.region_population = {}
+        self.region_poids = {}
         n = model.columnCount()
         #print("n = ",n)
         for i in range(1,n):
@@ -1085,10 +1085,10 @@ class Ui_Page1(object):
                 msg.setWindowTitle("Error")
                 msg.exec_()
                 return
-            population = int(model.item(1,i).text())
-            self.region_population[i-1] = population
+            poids = int(model.item(1,i).text())
+            self.region_poids[i-1] = poids
         self.stackedWidget.setCurrentWidget(self.page_4)
-    def resoudrecellTower(self):
+    def resoudrecelllocation(self):
 
         if not(is_float(self.textEdit_6.toPlainText())):
             msg = QtWidgets.QMessageBox()
@@ -1127,22 +1127,22 @@ class Ui_Page1(object):
             
             self.site_coverage_cost[i-1].append(value)
             print(self.site_coverage_cost)
-        res = cell_tower_problem(self.region_population,self.site_coverage_cost,self.allocated_budget)
+        res = maximum_coverage_problem(self.region_poids,self.site_coverage_cost,self.allocated_budget)
         data = ""
         data += "Nombre de  Solution = " + str(len(res)) + "\n"
         try:
             for i in range(len(res)):
                 data += "Solution "+str(i+1)+"\n"
-                data += "Construction de la tour:\n"
-                for j in range(len(res[i]['towers_built'])):
-                    data += self.listtower[res[i]['towers_built'][j]] + " "
+                data += "Construction de l'emplacement:\n"
+                for j in range(len(res[i]['locations_built'])):
+                    data += self.listlocation[res[i]['locations_built'][j]] + " "
                 data+= "\n"
                 data+="Coût total : \n"
                 data+= str(res[i]['total_cost']) + "\n"
                 data+="consommation budgétaire : " +str(res[i]['budget_consumption'])+"%"+ "\n"
-                data+="Population Totale : "+str(res[i]['total_population'])+"\n"
+                data+="Poids Total : "+str(res[i]['total_poids'])+"\n"
                 data+="pourcentage de couverture : "+str(res[i]['coverage_percentage'])+"%"+ "\n"
-            self.rescelltower.setText(data)
+            self.rescelllocation.setText(data)
             self.stackedWidget.setCurrentWidget(self.page_5)
         except Exception as e:
             msg = QtWidgets.QMessageBox()
@@ -1238,7 +1238,7 @@ class Ui_Page1(object):
         if self.HydroEdit.toPlainText()=="" or not(is_int(self.HydroEdit.toPlainText())):
             msg = QtWidgets.QMessageBox()
             msg.setIcon(QtWidgets.QMessageBox.Warning)
-            msg.setText("Nombre des tours est faux")
+            msg.setText("Nombre des emplacements est faux")
             msg.setInformativeText("Entrez un nombre entier")
             msg.setWindowTitle("Erreur")
             msg.exec_()
@@ -1248,7 +1248,7 @@ class Ui_Page1(object):
         routes_number = int(self.HydroEdit.toPlainText())
         self.listCols = ["Origine","Destination","Cout","Quantité maximale"]
         columns_number = len(self.listCols)
-        #self.listtower = [('Tower' + str(i)) for i in range(1,tower_number+1)]
+        #self.listlocation = [('location' + str(i)) for i in range(1,location_number+1)]
        
         modelRoutes = QtGui.QStandardItemModel()
         

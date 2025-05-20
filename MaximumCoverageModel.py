@@ -4,30 +4,29 @@ import gurobipy as gp
 from gurobipy import GRB
 
 
-def cell_tower_problem(
-        region_population: dict[int, int],
+def maximum_coverage_problem(
+        zone_poids: dict[int, int],
         site_coverage_cost: dict[int, list[set[int] | float]],
         budget: float
 ):
     try:
         # Parameters
-        regions, population = gp.multidict(region_population)
+        zones, poids = gp.multidict(zone_poids)
 
         sites, coverage, cost = gp.multidict(site_coverage_cost)
 
         # MIP  model formulation
-        m = gp.Model("cell_tower")
+        m = gp.Model("maximum_coverage")
 
         build = m.addVars(len(sites), vtype=GRB.BINARY, name="Build")
-        is_covered = m.addVars(len(regions), vtype=GRB.BINARY, name="Is_covered")
+        is_covered = m.addVars(len(zones), vtype=GRB.BINARY, name="Is_covered")
 
         m.addConstrs((gp.quicksum(build[t] for t in sites if r in coverage[t]) >= is_covered[r]
-                      for r in regions), name="Build2cover")
+                      for r in zones), name="Build2cover")
         m.addConstr(build.prod(cost) <= budget, name="budget")
-        #add a constraint to ensure that at least one cell tower is built
         m.addConstr(build.sum() >= 1, name="at_least_one")
 
-        m.setObjective(is_covered.prod(population), GRB.MAXIMIZE)
+        m.setObjective(is_covered.prod(poids), GRB.MAXIMIZE)
 
         m.setParam(GRB.Param.PoolSolutions, 4)
         m.setParam(GRB.Param.PoolSearchMode, 2)
@@ -43,7 +42,7 @@ def cell_tower_problem(
         elif m.status == GRB.INFEASIBLE:
             print("infeasible")
         elif m.status == GRB.INF_OR_UNBD:
-            raise Exception("error")
+            print("error")
 
         # Display all solutions found in the solution pool
 
@@ -53,22 +52,22 @@ def cell_tower_problem(
             m.setParam(GRB.Param.SolutionNumber, k)
             print(f"\nSolution {k + 1}:")
             solution_k = {}
-            towers_built_k = []
-            for tower in build.keys():
-                if abs(build[tower].getAttr(GRB.Attr.Xn) - 1) < 1e-6:
-                    print(f"Build a cell tower at location Tower {tower}.")
-                    towers_built_k.append(tower)
-            solution_k["towers_built"] = towers_built_k
-            total_cost = sum(cost[tower] * int(build[tower].getAttr(GRB.Attr.Xn)) for tower in range(len(sites)))
+            locations_built_k = []
+            for location in build.keys():
+                if abs(build[location].getAttr(GRB.Attr.Xn) - 1) < 1e-6:
+                    print(f"Build a cell location at location location {location}.")
+                    locations_built_k.append(location)
+            solution_k["locations_built"] = locations_built_k
+            total_cost = sum(cost[location] * int(build[location].getAttr(GRB.Attr.Xn)) for location in range(len(sites)))
             solution_k["total_cost"] = total_cost
             budget_consumption = round(100 * total_cost / budget, 2)
             solution_k["budget_consumption"] = budget_consumption
             print(f"Percentage of budget consumed: {budget_consumption}%")
-            total_population = sum(population[region] for region in range(len(regions)))
-            solution_k["total_population"] = total_population
-            coverage_percentage = round(100 * is_covered.prod(population).getValue() / total_population, 2)
+            total_poids = sum(poids[region] for region in range(len(zones)))
+            solution_k["total_poids"] = total_poids
+            coverage_percentage = round(100 * is_covered.prod(poids).getValue() / total_poids, 2)
             solution_k["coverage_percentage"] = coverage_percentage
-            print(f"Population coverage: {coverage_percentage}%")
+            print(f"poids coverage: {coverage_percentage}%")
             solutions.append(solution_k)
 
         #return solutions
@@ -77,7 +76,7 @@ def cell_tower_problem(
     except Exception as e:
         raise Exception(e)
 
-    solutions = cell_tower_problem(
+    solutions = cell_location_problem(
     {
         0: 523, 1: 690, 2: 420,
         3: 1010, 4: 1200, 5: 5850,
